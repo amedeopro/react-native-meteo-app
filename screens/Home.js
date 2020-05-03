@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Button, Modal } from 'react-native';
-import Header from '../components/Header'
 import WeatherCard from '../components/WeatherCard'
 import AddCityModal from '../components/AddCityModal'
 import RoundButton from '../components/RoundButton'
-import { useLinkProps, useNavigation } from '@react-navigation/native';
+import { useLinkProps, useNavigation} from '@react-navigation/native';
 
 export default function App() {
 
@@ -24,19 +23,19 @@ export default function App() {
     closeModal()
   }
 
-  const removeCardHandler = (id) => {
-    setCities(cities.filter(x => x.id !== id))
-  }
+  // const removeCardHandler = (id) => {
+  //   setCities(cities.filter(x => x.id !== id))
+  // }
 
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <AddCityModal visible={modalVisible} closeModal={closeModal} addCity={addCityHandler}/>
+      <AddCityModal visible={modalVisible} closeModal={closeModal} addCity={addCityHandler} />
       <ScrollView contentContainerStyle={styles.cardContainer}>
-        {cities.map((item, id) => <WeatherCard remove={() => removeCardHandler(item.id)} key={item.id} title={item.city} />)}
-        <RoundButton add={modalHandler}/>
-        <Button title='Vai a city' onPress={() => navigation.navigate('City',{cityName: 'Roma', value:'my value'})}/>
+        {cities.map((item, id) => <WeatherCard navigation={navigation} key={item.id} title={item.city} />)}
+        <RoundButton add={modalHandler} />
+        {/* <Button title='Vai a city' onPress={() => navigation.navigate('City', { cityName: 'Roma', value: 'my value' })} /> */}
       </ScrollView>
     </View>
   );

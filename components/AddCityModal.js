@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 50,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     tinyLogo: {
         width: 30,

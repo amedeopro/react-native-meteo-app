@@ -1,10 +1,15 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useLinkProps, useNavigation} from '@react-navigation/native';
 
 
 const WeatherCard = props => {
+    const navigation = useNavigation();
+    const goToCity = () => {
+        navigation.navigate('City', {title: props.title})
+    }
     return (
-        <TouchableOpacity style={styles.card} onPress={props.remove}>
+        <TouchableOpacity style={styles.card} onPress={goToCity}>
             <View>
                 <Text style={styles.title}>{props.title}</Text>
             </View>
