@@ -33,7 +33,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <AddCityModal visible={modalVisible} closeModal={closeModal} addCity={addCityHandler}/>
-      <Header title='Meteo App' />
       <ScrollView contentContainerStyle={styles.cardContainer}>
         {cities.map((item, id) => <WeatherCard remove={() => removeCardHandler(item.id)} key={item.id} title={item.city} />)}
         <RoundButton add={modalHandler}/>
