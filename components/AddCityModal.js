@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, Modal, Button, TextInput, Alert, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, Modal, Button, Keyboard, TextInput, Alert, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
 import RoundButton from './RoundButton';
+import {colors} from '../utils/colors'
 
 const AddCityModal = props => {
 
@@ -22,18 +23,20 @@ const AddCityModal = props => {
 
     return (
         <Modal visible={props.visible} animationType={'slide'}>
-            <View style={styles.modalContainer}>
-                <Text style={styles.title}>Aggiungi una città</Text>
-                <View style={{ flexDirection: 'row', marginBottom: 25 }}>
-                    <TextInput onChangeText={changeTextHandler} value={textCity} style={styles.textInput} />
-                    <RoundButton add={memorizedHandleClick}/>
-                </View>
-                <TouchableOpacity onPress={props.closeModal}>
-                    <View style={styles.containerRoundB}>
-                        <Image style={styles.tinyLogo} source={require('../assets/closeb.png')} />
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                <View style={styles.modalContainer}>
+                    <Text style={styles.title}>Aggiungi una città</Text>
+                    <View style={{ flexDirection: 'row', marginBottom: 25 }}>
+                        <TextInput autoCorrect={false} placeholder='Aggiungi una città' onChangeText={changeTextHandler} value={textCity} style={styles.textInput} />
+                        <RoundButton add={memorizedHandleClick} />
                     </View>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity onPress={props.closeModal}>
+                        <View style={styles.containerRoundB}>
+                            <Image style={styles.tinyLogo} source={require('../assets/closeb.png')} />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </TouchableWithoutFeedback>
         </Modal>
     )
 }
@@ -49,7 +52,9 @@ const styles = StyleSheet.create({
     textInput: {
         borderBottomWidth: 1,
         width: '80%',
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        borderBottomColor: colors.mainOrange,
+        paddingHorizontal: 10
     },
     title: {
         fontWeight: 'bold',
