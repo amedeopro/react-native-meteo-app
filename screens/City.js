@@ -4,11 +4,11 @@ import { useLinkProps, useNavigation } from '@react-navigation/native';
 
 
 
-const City = () => {
+const City = (props) => {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <Text>Hello from city</Text>
+            <Text>Hello from {props.route.params.cityName}</Text>
             <Button title='Torna Indietro' onPress={() => navigation.goBack()}/>
         </View>
     )

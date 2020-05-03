@@ -36,7 +36,7 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.cardContainer}>
         {cities.map((item, id) => <WeatherCard remove={() => removeCardHandler(item.id)} key={item.id} title={item.city} />)}
         <RoundButton add={modalHandler}/>
-        <Button title='Vai a city' onPress={() => navigation.navigate('City')}/>
+        <Button title='Vai a city' onPress={() => navigation.navigate('City',{cityName: 'Roma', value:'my value'})}/>
       </ScrollView>
     </View>
   );
