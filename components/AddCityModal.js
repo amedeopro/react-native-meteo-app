@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, View, Text, Modal, Button, Keyboard, TextInput, Alert, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
+import axios from 'axios'
 import RoundButton from './RoundButton';
 import {colors} from '../utils/colors'
 
 const AddCityModal = props => {
+
+   
 
     const [textCity, setTextCity] = useState('')
 
@@ -16,6 +19,7 @@ const AddCityModal = props => {
             Alert.alert('Attenzione', 'Devi inserire il nome di una città')
             return
         }
+
         props.addCity(textCity)
         setTextCity('')
     }
